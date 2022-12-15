@@ -17,12 +17,12 @@
 variable "iap_ocs_support_email" {
   description = "IAP OAuth consent screen support email address"
   type = string
-  default = []
+  default = null
 }
 variable "iap_ocs_app_title" {
   description = "IAP OAuth consent screen app title"
   type = string
-  default = []
+  default = null
 }
 variable "iap_client_name" {
   description = "IAP OAuth consent screen client id and secret name"
@@ -35,5 +35,5 @@ variable "test_iap_brand_name" {
 variable "test_acm_policy_name" {
   description = "Access Context Manager policy that was created manually. To list acm policy use the gcloud command: gcloud access-context-manager policies list --organization=ORG_ID"
   type = string
-  default  = []
+  default  = null
 }
