@@ -14,40 +14,7 @@
  * limitations under the License.
  */
 
-# variable "group_configs" {
-#   description = "Optional unmanaged groups to create. Can be referenced in backends via outputs."
-#   type = map(object({
-#     instances   = list(string)
-#     named_ports = map(number)
-#     zone        = string
-#   }))
-#   default = {}
-# }
-
-variable "project_id" {
-  description = "Project id where resources will be created."
-  type        = string
-}
-
-variable "instances" {
-  description = "List of instances which are part of the unmanaged instance group"
-  type        = list(string)
-  default     = []
-}
-
-variable "named_ports" {
-  description = "List of named ports of the unmanaged instance group"
-  type        = map(number)
-  default     = {}
-}
-
-variable "zone" {
-  description = "List of instances which are part of the unmanaged instance group"
-  type        = string
-  default     = null
-}
-
-variable "name" {
-  description = "Name used for all resources."
-  type        = string
+variable "test_acm_policy_name" {
+  description = "Access Context Manager policy that was created manually. To list acm policy use the gcloud command: gcloud access-context-manager policies list --organization=ORG_ID"
+  type = string
 }
