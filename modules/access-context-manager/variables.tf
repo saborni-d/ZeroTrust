@@ -18,3 +18,10 @@ variable "test_acm_policy_name" {
   description = "Access Context Manager policy that was created manually. To list acm policy use the gcloud command: gcloud access-context-manager policies list --organization=ORG_ID"
   type = string
 }
+variable "google_groups" {
+  description = "Map of Google group name and email IDs"
+  type = map(object({
+    id = string
+    access_level_title = string
+  }))
+}
