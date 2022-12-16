@@ -14,23 +14,11 @@
  * limitations under the License.
  */
 
-variable "iap_ocs_support_email" {
-  description = "IAP OAuth consent screen support email address"
+variable "iap_client_id" {
+  description = "secret ID for IAP client"
   type = string
 }
-variable "iap_ocs_app_title" {
-  description = "IAP OAuth consent screen app title"
-  type = string
-}
-variable "iap_client_name" {
-  description = "IAP OAuth consent screen client id and secret name"
-    type = string
-}
-variable "test_iap_brand_name" {
-  description = "IAP Brand name that was created manually. To list brands use the gcloud command: gcloud iap oauth-brands list --project=PROJECT_ID"
-  type = string
-}
-variable "test_acm_policy_name" {
-  description = "Access Context Manager policy that was created manually. To list acm policy use the gcloud command: gcloud access-context-manager policies list --organization=ORG_ID"
+variable "iap_client_secret" {
+  description = "IAP secret ID for client secret"
   type = string
 }
