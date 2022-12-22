@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+variable "project_id" {
+  description = "Project id where the keyring will be created."
+  type        = string
+}
 variable "iap_ocs_support_email" {
   description = "IAP OAuth consent screen support email address"
   type = string
