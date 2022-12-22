@@ -13,9 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-output "client_id" {
-  description = "IAP Client ID."
-  value       = google_iap_client.iap_client_creds.id
-}
-
