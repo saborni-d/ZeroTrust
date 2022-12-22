@@ -14,8 +14,14 @@
  * limitations under the License.
  */
 
-output "client_id" {
-  description = "IAP Client ID."
-  value       = google_iap_client.iap_client_creds.id
+output "oauth2_client_id" {
+  description = "OAUTH2 Client ID."
+  value       = google_secret_manager_secret_version.iap_client_id_version.secret_data
 }
+   
+   output "oauth2_client_secret" {
+  description = "OAUTH2 Client Secret."
+  value       = google_secret_manager_secret_version.iap_client_secret_version.secret_data
+}
+
 
