@@ -19,6 +19,7 @@ variable "google_groups" {
     id = string
     access_level_title = string
   }))
+  default = {}
 }
    
 variable "organization" {
@@ -28,4 +29,5 @@ variable "organization" {
     id          = number
     customer_id = string
   })
+  default = {}
 }
