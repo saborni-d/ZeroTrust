@@ -13,7 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+variable "project_id" {
+  description = "Project id where the keyring will be created."
+  type        = string
+}
+   
 variable "iap_client_id" {
   description = "secret ID for IAP client"
   type = string
