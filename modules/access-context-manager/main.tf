@@ -133,7 +133,7 @@ resource "google_access_context_manager_access_level" "ext_contractors_access_le
 #IAP IAM bindings for users on which above access levels need to be enforced
 resource "google_iap_web_iam_member" "member" {
   for_each = var.google_groups
-  project = google_project_service.enable_project_apis.project
+  project = var.project_id
   role = "roles/iap.httpsResourceAccessor"
   member = "group:${each.value.id}"
   condition {
