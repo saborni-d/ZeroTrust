@@ -33,6 +33,7 @@ variable "lb_ssl_policy_min_tls_version" {
 variable "lb_target_tags" {
   description = "Network tags that need to targetted for health check"
   type = list(string)
+  default = []
 }
 variable "lb_managed_ssl_cert_domains" {
   description = "Subdomain name for the load balancer Google managed SSL certificates. E.g. test-app.example.com"
@@ -41,6 +42,7 @@ variable "lb_managed_ssl_cert_domains" {
 variable "lb_url_map_hosts" {
   description = "Subdomain name for the load balancer Frontend/URL map. E.g. test-app.example.com"
   type = list(string)
+  default = []
 }
 variable "lb_url_map_name" {
   description = "Name of the load balancer URL map"
@@ -49,6 +51,7 @@ variable "lb_url_map_name" {
 variable "lb_hc_fw_networks" {
   description = "VPC network in which the load balancer health check firewall needs to be created"
   type = list(string)
+  default = []
 }
 variable "lb_backend_config" {
   description = "Map backend indices to list of backend maps."
