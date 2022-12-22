@@ -1,13 +1,13 @@
 resource "google_secret_manager_secret" "iap_client_id" {
   secret_id = var.iap_client_id
-  project = google_project_service.enable_project_apis.project
+  project = var.project_id
   replication {
     automatic = true
   }
 }
 resource "google_secret_manager_secret" "iap_client_secret" {
   secret_id = var.iap_client_secret
-  project = google_project_service.enable_project_apis.project
+  project = var.project_id
   replication {
     automatic = true
   }
