@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 resource "google_iap_client" "iap_client_creds" { #TODO: Authorized Redirect URIs can be done only via console - document this as post terraform step
-  project = var.project_id
+  project_id = var.project_id
   display_name = var.iap_client_name
   brand        =  var.test_iap_brand_name
 }
