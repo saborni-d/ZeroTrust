@@ -18,4 +18,7 @@ output "client_id" {
   description = "IAP Client ID."
   value       = google_iap_client.iap_client_creds.id
 }
-
+output "client_secret" {
+  description = "IAP Client Secret."
+  value       = google_iap_client.iap_client_creds.secret
+}
