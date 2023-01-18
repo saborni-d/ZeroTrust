@@ -6,8 +6,8 @@ locals {
       key => merge(value, {
         iap_config = {
           enable               = true
-          oauth2_client_id     = google_secret_manager_secret_version.iap_client_id_version.secret_data #TODO: replace with secret manager
-          oauth2_client_secret = google_secret_manager_secret_version.iap_client_secret_version.secret_data #TODO: replace with secret manager
+          oauth2_client_id     = var.oauth2_client_id #TODO: replace with secret manager
+          oauth2_client_secret = var.oauth2_client_secret #TODO: replace with secret manager
         }
         }
       )
