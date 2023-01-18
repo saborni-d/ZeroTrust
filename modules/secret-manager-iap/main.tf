@@ -16,9 +16,9 @@ resource "google_secret_manager_secret" "iap_client_secret" {
 
 resource "google_secret_manager_secret_version" "iap_client_id_version" {
   secret = google_secret_manager_secret.iap_client_id.id
-  secret_data = google_iap_client.iap_client_creds.client_id
+  secret_data = var.client_id
 }
 resource "google_secret_manager_secret_version" "iap_client_secret_version" {
   secret = google_secret_manager_secret.iap_client_secret.id
-  secret_data = google_iap_client.iap_client_creds.secret
+  secret_data = var.client_secret
 }
