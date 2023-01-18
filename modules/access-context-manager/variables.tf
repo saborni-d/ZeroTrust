@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-variable "test_acm_policy_name" {
+variable "acm_policy_name" {
   description = "Access Context Manager policy that was created manually. To list acm policy use the gcloud command: gcloud access-context-manager policies list --organization=ORG_ID"
   type = string
 }
