@@ -14,6 +14,16 @@
  * limitations under the License.
  */
 
+variable "oauth2_client_id" {
+  description = "Client ID store in Secret Manager"
+  type = string
+}
+   
+variable "ouath2_client_secret" {
+  description = "Client secret stored in Secret Manager"
+  type = string
+}
+   
 variable "lb_backend_prefix" {
   description = "Prefix for the backend service name"
   type = string
