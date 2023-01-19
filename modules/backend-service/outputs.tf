@@ -14,22 +14,7 @@
  * limitations under the License.
  */
 
-output "forwarding_rule" {
-  description = "Forwarding rule resource."
-  value       = google_compute_forwarding_rule.default
-}
 
-output "forwarding_rule_address" {
-  description = "Forwarding rule address."
-  value       = google_compute_forwarding_rule.default.ip_address
-}
-
-output "forwarding_rule_id" {
-  description = "Forwarding rule id."
-  value       = google_compute_forwarding_rule.default.id
-}
-
-output "forwarding_rule_self_link" {
-  description = "Forwarding rule self link."
-  value       = google_compute_forwarding_rule.default.self_link
+output "backend_service_id" {
+  value = google_compute_backend_service.backend-service.id
 }
