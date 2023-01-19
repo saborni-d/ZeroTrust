@@ -14,7 +14,23 @@
  * limitations under the License.
  */
 
-resource "google_compute_forwarding_rule" "default" {
+locals {
+  health_check = (
+    var.health_check != null
+    ? var.health_check
+    : try(local.health_check_resource.self_link, null)
+  )
+  health_check_resource = try(
+    google_compute_health_check.http.0,
+    google_compute_health_check.https.0,
+    google_compute_health_check.tcp.0,
+    google_compute_health_check.ssl.0,
+    {}
+  )
+  health_check_type = try(var.health_check_config.type, null)
+}
+
+resource "google_compute_region_backend_service" "default" {
   provider              = google-beta
   project               = var.project_id
   name                  = var.name
@@ -22,13 +38,72 @@ resource "google_compute_forwarding_rule" "default" {
   load_balancing_scheme = "INTERNAL"
   region                = var.region
   network               = var.network
-  subnetwork            = var.subnetwork
-  ip_address            = var.address
-  ip_protocol           = var.protocol # TCP | UDP
-  ports                 = var.ports    # "nnnnn" or "nnnnn,nnnnn,nnnnn" max 5
-  service_label         = var.service_label
-  all_ports             = var.ports == null ? true : null
-  allow_global_access   = var.global_access
-  backend_service       = var.backend_service
-  labels                = var.labels
+  health_checks         = [local.health_check]
+  protocol              = var.protocol
+
+  dynamic "backend" {
+    for_each = { for b in var.backends : b => b }
+    iterator = backend
+    content {
+      group = backend.key
+    }
+  }
+
+}
+
+resource "google_compute_health_check" "http" {
+  provider = google-beta
+  count = (
+    var.health_check == null && local.health_check_type == "http" ? 1 : 0
+  )
+  project     = var.project_id
+  name        = var.name
+  description = "Terraform managed."
+
+  http_health_check {
+    port = try(var.health_check_config.port, null)
+  }
+}
+
+resource "google_compute_health_check" "https" {
+  provider = google-beta
+  count = (
+    var.health_check == null && local.health_check_type == "https" ? 1 : 0
+  )
+  project     = var.project_id
+  name        = var.name
+  description = "Terraform managed."
+
+  https_health_check {
+    port = try(var.health_check_config.port, null)
+  }
+}
+
+resource "google_compute_health_check" "tcp" {
+  provider = google-beta
+  count = (
+    var.health_check == null && local.health_check_type == "tcp" ? 1 : 0
+  )
+  project     = var.project_id
+  name        = var.name
+  description = "Terraform managed."
+
+  tcp_health_check {
+    port = try(var.health_check_config.port, null)
+  }
+
+}
+
+resource "google_compute_health_check" "ssl" {
+  provider = google-beta
+  count = (
+    var.health_check == null && local.health_check_type == "ssl" ? 1 : 0
+  )
+  project     = var.project_id
+  name        = var.name
+  description = "Terraform managed."
+
+  ssl_health_check {
+    port = try(var.health_check_config.port, null)
+  }
 }
