@@ -40,6 +40,7 @@ variable "name" {
 variable "network" {
   description = "Network used for resources."
   type        = string
+  default = null
 }
 
 variable "ports" {
@@ -73,6 +74,7 @@ variable "service_label" {
 variable "subnetwork" {
   description = "Subnetwork used for the forwarding rule."
   type        = string
+  default = null
 }
 
 variable "backend_service" {
